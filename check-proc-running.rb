@@ -41,10 +41,7 @@ class CheckProcRun < Sensu::Plugin::Check::CLI
     procs = `ps aux | grep -v check-proc-running`
     running = false
     procs.each_line do |proc|
-      if proc.include?("#{config[:proc_name]}")
-        puts proc
-        running = true
-      end
+      running = true if proc.include?("#{config[:proc_name]}")
     end
     if running
       ok "#{config[:proc_name]} running."
