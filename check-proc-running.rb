@@ -35,7 +35,8 @@ class CheckProcRun < Sensu::Plugin::Check::CLI
   option :proc_name,
     short:       "-p process_name",
     long:        "--proc process_name",
-    description: "Define the Process Name(Require)"
+    description: "Define the Process Name",
+    required:    true
 
   def run
     procs = `ps aux | grep -v check-proc-running`
